@@ -1,4 +1,4 @@
-# 🚗 Cred Garage Dashboard
+# ⚙️ Task Management Dashboard
 
 A modern web dashboard built for **Task Management**, designed using React.js(Vite) and Tailwind CSS. It features fully functional, reusable components, and a fully responsive layout for both desktop and mobile experiences.
 
