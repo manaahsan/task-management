@@ -21,29 +21,17 @@ import { Input } from "@/components/ui/input";
 
 // useContext
 import { useAppContext } from "@/context/AppContext";
-import { project_tasks } from "@/lib/helper";
-
-type ProjectForm = {
-  id: string;
-  projectId: string;
-  title: string;
-  status: string;
-  assignedTo: string;
-  dueDate: string;
-  startTime: string;
-  endTime: string;
-};
+import type { Task } from "@/lib/types";
 
 const AddProject = () => {
   const {
     setSelectedTask,
     isAddProjectOpen,
     setIsAddProjectOpen,
-    projectIDTasks,
     setProjectIDTasks,
   } = useAppContext();
   const { id } = useParams();
-  const [addProject, setAddProject] = useState<ProjectForm>({
+  const [addProject, setAddProject] = useState<Task>({
     id: "",
     projectId: id || "",
     title: "",
@@ -53,10 +41,8 @@ const AddProject = () => {
     startTime: "",
     endTime: "",
   });
-
-  console.log(id);
   return (
-    <Dialog open={isAddProjectOpen} onOpenChange={setIsAddProjectOpen} >
+    <Dialog open={isAddProjectOpen} onOpenChange={setIsAddProjectOpen}>
       <DialogContent className="max-w-md h-96 overflow-auto">
         <DialogHeader>
           <DialogTitle>Add Project</DialogTitle>
@@ -66,7 +52,7 @@ const AddProject = () => {
           onSubmit={(e) => {
             e.preventDefault();
 
-            const newTask: ProjectForm = {
+            const newTask: Task = {
               ...addProject,
               id: crypto.randomUUID(),
               projectId: id || "",
@@ -167,27 +153,6 @@ const AddProject = () => {
                 <SelectItem value="todo">To Do</SelectItem>
                 <SelectItem value="in-progress">In Progress</SelectItem>
                 <SelectItem value="done">Done</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div>
-            <label className="block mb-1 text-sm font-medium">Status</label>
-            <Select
-              value={addProject.status}
-              onValueChange={(value) =>
-                setAddProject((prev) =>
-                  prev ? { ...prev, status: value } : prev
-                )
-              }
-            >
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Select Technician" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="todo">Technician A</SelectItem>
-                <SelectItem value="in-progress">Technician B</SelectItem>
-                <SelectItem value="done">Technician C</SelectItem>
               </SelectContent>
             </Select>
           </div>

@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from "react";
 
 // helper
-import { mockTasks, project_tasks } from "@/lib/helper";
+import { dummyProjects, mockTasks, project_tasks } from "@/lib/helper";
 
 // types
 import type { AppContextType, Project, Task } from "@/lib/types";
@@ -9,17 +9,16 @@ import type { AppContextType, Project, Task } from "@/lib/types";
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
+  const [projects, setProjects] = useState<Project[]>(dummyProjects);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isTaskModalOpen, setIsTaskModalOpen] = useState(false);
   const [statusUpdateIsOpen, setStatusUpdateIsOpen] = useState(false);
-  const [isProjectDetailsOpen, setIsProjectDetailsOpen] = useState(false)
-  const [isAddProjectOpen, setIsAddProjectOpen] = useState(false)
-
+  const [isProjectDetailsOpen, setIsProjectDetailsOpen] = useState(false);
+  const [isAddProjectOpen, setIsAddProjectOpen] = useState(false);
+  const [isSheetOpen, setIsSheetOpen] = useState(false)
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [projectIDTasks, setProjectIDTasks] = useState<Task[]>(project_tasks);
   const [tasks, setTasks] = useState(mockTasks);
-
-
 
   return (
     <AppContext.Provider
@@ -39,8 +38,11 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
         projectIDTasks,
         setProjectIDTasks,
         isAddProjectOpen,
-        setIsAddProjectOpen
-
+        setIsAddProjectOpen,
+        projects,
+        setProjects,
+        isSheetOpen,
+        setIsSheetOpen,
       }}
     >
       {children}

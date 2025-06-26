@@ -1,21 +1,43 @@
 export interface Task {
   id: string;
   title: string;
-  projectId?:string;
+  projectId?: string;
   status: string;
   assignedTo: string;
   dueDate: string;
   startTime: string;
   endTime: string;
+  startDate?: string,
+  endDate?: string,
   dependencies?: string[];
-  progress?: number;    
+  progress?: number;
+  tasks?: SubTask[];
+  
+}
+export interface SubTask {
+  id: string;
+  title: string;
+  status: string;
+  startDate?: string;
+  endDate?: string;
+  assignedTo?:string;
+  dueDate?:string;
+  startTime?:string;
+  endTime?:string;
+}
+
+export interface Column {
+  name: string;
+  tasks: SubTask[];
 }
 
 export interface Project {
   id: string;
-  name: string;
+  title: string;
   status: string;
-  tasks: Task[];
+  tasks?: SubTask[];
+  startDate?: string;
+  endDate?: string;
 }
 
 export interface AppContextType {
@@ -28,12 +50,16 @@ export interface AppContextType {
   selectedTask: Task | null;
   // setSelectedTask: (task: Task | null) => void;
   setSelectedTask: React.Dispatch<React.SetStateAction<Task | null>>;
-  tasks:Task[];
+  tasks: Task[];
   setTasks: (task: Task[]) => void;
   isProjectDetailsOpen: boolean;
-  setIsProjectDetailsOpen: (open:boolean) => void;
+  setIsProjectDetailsOpen: (open: boolean) => void;
   projectIDTasks: Task[];
   setProjectIDTasks: React.Dispatch<React.SetStateAction<Task[]>>;
-  isAddProjectOpen:boolean;
-  setIsAddProjectOpen: (open:boolean) => void
+  isAddProjectOpen: boolean;
+  setIsAddProjectOpen: (open: boolean) => void;
+  projects: Project[];
+  setProjects: (project: Project[]) => void;
+  isSheetOpen: boolean;
+  setIsSheetOpen: (isSheetOpen: boolean) => void;
 }

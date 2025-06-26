@@ -6,8 +6,8 @@ export default function Onboarding() {
   const navigate = useNavigate();
 
   const handleGetStarted = () => {
-    // You can optionally save onboarding state to localStorage
-    navigate("/");
+    document.cookie = "logged_in=true; path=/; max-age=86400";
+    navigate("/projects");
   };
 
   return (

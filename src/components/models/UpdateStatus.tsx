@@ -91,7 +91,14 @@ const UpdateStatus = () => {
 
             <DialogFooter>
               <Button variant="outline" onClick={() => submitHandler()}>
-                Close
+                Upadte Status
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setStatusUpdateIsOpen(false)}
+              >
+                Cancel
               </Button>
             </DialogFooter>
           </>

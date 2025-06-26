@@ -6,7 +6,6 @@ interface GanttChartViewProps {
 }
 
 const GanttChartView: React.FC<GanttChartViewProps> = ({ tasks }) => {
-  // Calculate min/max date for timeline scale
   const dates = tasks.flatMap(t => [new Date(t.dueDate)]);
   const minDate = new Date(Math.min(...dates.map(d => d.getTime())));
   const maxDate = new Date(Math.max(...dates.map(d => d.getTime())));

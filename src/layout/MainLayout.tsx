@@ -1,6 +1,8 @@
-// src/layout/MainLayout.tsx
+
 import { Outlet } from "react-router-dom";
-import { Navbar } from "@/components/shared/Navbar";
+
+// components
+import { Navbar } from "@/components/shared/Header";
 import { Sidebar } from "@/components/shared/Sidebar";
 
 export function MainLayout() {
