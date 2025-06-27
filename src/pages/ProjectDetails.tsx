@@ -18,14 +18,11 @@ import { project_tasks } from "@/lib/helper";
 // types
 import type { Task } from "@/lib/types";
 
-
-
 export default function ProjectDetails() {
   const { id: projectId } = useParams();
   const { projectIDTasks, setProjectIDTasks, setIsAddProjectOpen } =
     useAppContext();
   
-  console.log(projectIDTasks, 31);
   useEffect(() => {
     const initialTasks = project_tasks?.filter(
       (task: Task) => task.projectId === projectId
@@ -35,11 +32,11 @@ export default function ProjectDetails() {
 
   return (
     <div className="p-4">
-      <div className="flex justify-between">
+      <div className="flex flex-col justify-between md:flex-row">
         <h2 className="text-2xl font-semibold mb-6">
           Tasks for Project: {projectId}
         </h2>
-        <Button onClick={() => setIsAddProjectOpen(true)}>+ Add Project</Button>
+        <Button className="mb-4 md:mb-0" onClick={() => setIsAddProjectOpen(true)}>+ Add Project</Button>
       </div>
 
       {projectIDTasks?.length === 0 ? (

@@ -1,6 +1,6 @@
 // "use client";
 import { useState } from "react";
-import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
+import { DragDropContext, Droppable, Draggable, type DropResult } from "@hello-pangea/dnd";
 
 // components
 import { TaskCard } from "@/components/shared/TaskCard";
@@ -10,7 +10,7 @@ import { initialColumns } from "@/lib/helper";
 
 export default function KanbanBoard() {
   const [columns, setColumns] = useState(initialColumns);
-  const handleDragEnd = (result: any) => {
+  const handleDragEnd = (result: DropResult) => {
     const { source, destination } = result;
 
     if (!destination) return;
@@ -58,7 +58,7 @@ export default function KanbanBoard() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4">
         {Object.entries(columns).map(([columnId, column]) => (
           <div key={columnId} className="bg-muted p-4 rounded shadow-md">
-            <h2 className="text-xl font-semibold mb-4">{column.name}</h2>
+            <h2 className={"text-xl font-semibold mb-4"}>{column.name}</h2>
             <Droppable droppableId={columnId}>
               {(provided) => (
                 <div

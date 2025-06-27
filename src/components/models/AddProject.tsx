@@ -43,7 +43,7 @@ const AddProject = () => {
   });
   return (
     <Dialog open={isAddProjectOpen} onOpenChange={setIsAddProjectOpen}>
-      <DialogContent className="max-w-md h-96 overflow-auto">
+      <DialogContent className=" max-w-[90%] h-96 overflow-auto md:max-w-md">
         <DialogHeader>
           <DialogTitle>Add Project</DialogTitle>
         </DialogHeader>
@@ -89,6 +89,7 @@ const AddProject = () => {
                   prev ? { ...prev, dueDate: e.target.value } : prev
                 )
               }
+              className="block"
               required
             />
           </div>
@@ -119,6 +120,7 @@ const AddProject = () => {
               onChange={(e) =>
                 setAddProject({ ...addProject, startTime: e.target.value })
               }
+              className="block"
               required
             />
           </div>
@@ -132,6 +134,7 @@ const AddProject = () => {
               onChange={(e) =>
                 setAddProject({ ...addProject, endTime: e.target.value })
               }
+              className="block"
               required
             />
           </div>

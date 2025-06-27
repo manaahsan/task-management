@@ -35,40 +35,7 @@ export const mockTasks: Task[] = [
   },
 ];
 
-// export const project_tasks = [
-//   {
-//     id: "t1",
-//     projectId: "project-001",
-//     title: "Install power sockets",
-//     status: "in-progress",
-//     assignedTo: "Technician A",
-//     dueDate: "2025-06-25",
-//     startTime: "09:00",
-//     endTime: "11:00",
-//   },
-//   {
-//     id: "t2",
-//     projectId: "project-001",
-//     title: "Cable routing",
-//     status: "todo",
-//     assignedTo: "Technician B",
-//     dueDate: "2025-06-27",
-//     startTime: "13:00",
-//     endTime: "16:00",
-//   },
-//   {
-//     id: "t3",
-//     projectId: "project-001",
-//     title: "Final inspection",
-//     status: "done",
-//     assignedTo: "Technician C",
-//     dueDate: "2025-06-30",
-//     startTime: "10:00",
-//     endTime: "12:00",
-//   },
-// ];
 export const project_tasks = [
-  // Project 001
   {
     id: "t1",
     projectId: "project-001",
@@ -168,7 +135,7 @@ export const dummyProjects = [
     status: "In Progress",
     startDate: "2025-06-01",
     endDate: "2025-06-30",
-    tasks: [{ id: "3", title: "Cable wiring", status: "inProgress" }],
+    tasks: [{ id: "3", title: "Cable wiring", status: "in-Progress" }],
   },
   {
     id: "project-002",
@@ -227,7 +194,7 @@ export const initialColumns: Record<string, Column> = {
       },
     ],
   },
-  inProgress: {
+  "in-progress": {
     name: "In Progress",
 
     tasks: [

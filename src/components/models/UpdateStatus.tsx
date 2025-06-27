@@ -19,6 +19,7 @@ import { Button } from "@/components/ui/button";
 
 // useContext
 import { useAppContext } from "@/context/AppContext";
+import type { Task } from "@/lib/types";
 
 const UpdateStatus = () => {
   const {
@@ -29,10 +30,10 @@ const UpdateStatus = () => {
     tasks,
     setTasks,
   } = useAppContext();
-  const [status, setStatus] = useState<String>("");
+  const [status, setStatus] = useState("");
   const submitHandler = () => {
     if (!selectedTask) return;
-    const updatedTask: any = { ...selectedTask, status: status };
+    const updatedTask:Task = { ...selectedTask, status: status };
 
     const updatedTasks = tasks.map((t) =>
       t.id === updatedTask.id ? updatedTask : t
@@ -46,7 +47,7 @@ const UpdateStatus = () => {
   };
   return (
     <Dialog open={statusUpdateIsOpen} onOpenChange={setStatusUpdateIsOpen}>
-      <DialogContent className="max-w-md">
+      <DialogContent className="max-w-[90%] md:max-w-md">
         <DialogHeader>
           <DialogTitle>Task Details</DialogTitle>
         </DialogHeader>

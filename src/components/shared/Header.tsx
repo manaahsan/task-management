@@ -19,7 +19,9 @@ export function Navbar() {
 
       <div className="flex items-center gap-2">
         <ThemeToggle />
-        <Logout />
+        <div className="hidden md:block">
+          <Logout />
+        </div>
       </div>
     </header>
   );

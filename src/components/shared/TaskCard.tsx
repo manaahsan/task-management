@@ -11,14 +11,13 @@ import { useAppContext } from "@/context/AppContext";
 import { statusColorMap } from "@/lib/helper";
 
 export const TaskCard = ({ task, edit }: any) => {
-  console.log(task, 11);
   const { setIsProjectDetailsOpen, setSelectedTask } = useAppContext();
 
   return (
     <Card key={task.id}>
       <CardHeader className="pb-2">
         <div className="flex justify-between items-center">
-          <CardTitle className="text-lg">{task.title}</CardTitle>
+          <CardTitle className="text-lg max-w-24 md:max-w-full">{task.title}</CardTitle>
           <Badge className={statusColorMap[task.status]}>{task.status}</Badge>
           {edit && (
             <button

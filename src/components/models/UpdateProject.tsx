@@ -30,7 +30,7 @@ const UpdateProject = () => {
 
   return (
     <Dialog open={isProjectDetailsOpen} onOpenChange={setIsProjectDetailsOpen}>
-      <DialogContent className="max-w-md">
+      <DialogContent className="max-w-[90%] md:max-w-md">
         <DialogHeader>
           <DialogTitle>Update Project Details</DialogTitle>
         </DialogHeader>

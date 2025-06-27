@@ -3,7 +3,7 @@ import { Chart } from "react-google-charts";
 // helper
 import { GanttOptions, Ganttdata } from "@/lib/helper";
 
-export default function GanttChartGoogle() {
+export default function TaskGanttView() {
   return (
     <Chart
       chartType="Gantt"

@@ -1,3 +1,5 @@
+import type { Range } from "react-date-range";
+
 export interface Task {
   id: string;
   title: string;
@@ -62,4 +64,10 @@ export interface AppContextType {
   setProjects: (project: Project[]) => void;
   isSheetOpen: boolean;
   setIsSheetOpen: (isSheetOpen: boolean) => void;
+  view: string;
+  setView: (view: string) => void;
+  statusFilter: string;
+  setStatusFilter: (statusFilter: string) => void;
+  dateRange: Range[];
+  setDateRange: (range: Range[]) => void;
 }

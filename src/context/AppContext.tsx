@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { type Range } from "react-date-range"
 
 // helper
 import { dummyProjects, mockTasks, project_tasks } from "@/lib/helper";
@@ -15,10 +16,23 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
   const [statusUpdateIsOpen, setStatusUpdateIsOpen] = useState(false);
   const [isProjectDetailsOpen, setIsProjectDetailsOpen] = useState(false);
   const [isAddProjectOpen, setIsAddProjectOpen] = useState(false);
-  const [isSheetOpen, setIsSheetOpen] = useState(false)
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [projectIDTasks, setProjectIDTasks] = useState<Task[]>(project_tasks);
   const [tasks, setTasks] = useState(mockTasks);
+  const [view, setView] = useState("list");
+  const [statusFilter, setStatusFilter] = useState("all");
+  const today = new Date();
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(today.getDate() - 7);
+
+  const [dateRange, setDateRange] = useState<Range[]>([
+    {
+      startDate: sevenDaysAgo,
+      endDate: today,
+      key: "selection",
+    },
+  ]);
 
   return (
     <AppContext.Provider
@@ -43,6 +57,12 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
         setProjects,
         isSheetOpen,
         setIsSheetOpen,
+        view,
+        setView,
+        statusFilter,
+        setStatusFilter,
+        dateRange,
+        setDateRange,
       }}
     >
       {children}
